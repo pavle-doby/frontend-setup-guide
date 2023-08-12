@@ -1,5 +1,7 @@
 # How to Setup React App
 
+> React + SWC, TypeScript, Tailwind, React Router + lazy loading, Redux
+
 ## Pre-requisites
 
 - Install Node.js and npm
@@ -99,6 +101,8 @@
 - Check in browser are your routes working properly
   - If something is not working, check react-router documentation
     - https://reactrouter.com/en/main/route/lazy
+
+> Commit your changes
 
 ## Setup Redux
 
