@@ -1,4 +1,4 @@
-# How to Setup React.js App
+# How to Setup React App
 
 ## Pre-requisites
 
@@ -18,7 +18,7 @@
 
 ## Setup style (TailwindCSS)
 
-- Follow tailwindcss setup guide (pass step 1 since we already created app with vite)
+- Follow tailwindcss setup guide (skip the step 1 since we already created app with vite)
   - https://tailwindcss.com/docs/guides/vite
 - (Recommended) If you are using VSCode, install Tailwind CSS IntelliSense extension
   - https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
