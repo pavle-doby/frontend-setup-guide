@@ -33,7 +33,7 @@
   - `npm install react-router-dom localforage match-sorter sort-by`
 - Setup lazy loading router
 
-  - Create `src/router.ts`
+  - Create `src/routes/router.ts`
   - Create few pages
     - Create `src/pages` directory
     - Create `src/pages/Home/Home.page.tsx` component
@@ -56,27 +56,42 @@
         );
       }
       ```
+  - Create routes for pages
+
+    - Create `src/routes/Home.routes.ts` file
+
+      ```tsx
+      export const homeRoutes = {
+        path: "/",
+        async lazy() {
+          let { Home } = await import("../pages/Home/Home.page.tsx");
+          return { Component: Home };
+        },
+        children: [],
+      };
+      ```
+
+    - Create `src/routes/About.routes.ts` file
+
+      ```tsx
+      export const aboutRoutes = {
+        path: "/about",
+        async lazy() {
+          let { About } = await import("../pages/About/About.page.tsx");
+          return { Component: About };
+        },
+        children: [],
+      };
+      ```
+
   - Add routes to `src/router.ts`
 
     ```tsx
     import { createBrowserRouter } from "react-router-dom";
+    import { homeRoutes } from "./Home.routes.ts";
+    import { aboutRoutes } from "./About.routes.ts";
 
-    export const router = createBrowserRouter([
-      {
-        path: "/",
-        async lazy() {
-          let { Home } = await import("./pages/Home/Home.page.tsx");
-          return { Component: Home };
-        },
-      },
-      {
-        path: "/about",
-        async lazy() {
-          let { About } = await import("./pages/About/About.page.tsx");
-          return { Component: About };
-        },
-      },
-    ]);
+    export const router = createBrowserRouter([homeRoutes, aboutRoutes]);
     ```
 
   - Add router to `src/App.tsx`
@@ -84,7 +99,7 @@
     ```tsx
     import "./App.css";
     import { RouterProvider } from "react-router-dom";
-    import { router } from "./router";
+    import { router } from "./routes/router";
 
     export function App(): JSX.Element {
       return (
